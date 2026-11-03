@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Automated web development workflow: Gemini Live to Google Drive to IBM Bob Harness to GitHub Pages.">
+  <title>Gemini Live to GitHub Pages | Automated Web Development Workflow</title>
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <header class="hero">
+    <div class="container">
+      <p class="eyebrow">Architecture overview</p>
+      <h1>Automated Web Development Workflow</h1>
+      <p class="lead">From a voice prompt in Gemini Live to a live web application on GitHub Pages, with no manual steps.</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section>
+      <h2>Executive summary</h2>
+      <p>An end-to-end pipeline that connects voice-driven AI prompts, real-time cloud synchronization, agentic execution and automated web deployment.</p>
+    </section>
+
+    <section>
+      <h2>Architecture &amp; data flow</h2>
+      <ol class="flow" aria-label="Data flow">
+        <li><strong>Gemini Live</strong><span>User prompt / file creation</span></li>
+        <li><strong>Google Drive</strong><span><code>files.watch</code> push notification</span></li>
+        <li><strong>HTTPS webhook</strong><span>Push notification delivered</span></li>
+        <li><strong>IBM Bob Harness</strong><span>Generates code</span></li>
+        <li><strong>GitHub repository</strong><span>Actions / Pages</span></li>
+        <li><strong>Live web application</strong><span>Public URL</span></li>
+      </ol>
+    </section>
+
+    <section>
+      <h2>Detailed workflow</h2>
+      <div class="cards">
+        <article class="card">
+          <h3>1. Voice interaction &amp; concept capture</h3>
+          <p class="role"><b>Gemini Live</b>: primary multimodal interface.</p>
+          <ul>
+            <li>User states website or app requirements verbally or in a live session.</li>
+            <li>Gemini Live formats structured specifications or source documents and saves them to Google Drive.</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>2. Event-driven webhook notification</h3>
+          <p class="role"><b>Google Drive API</b>: real-time event broker.</p>
+          <ul>
+            <li>Drive monitors the target folder with <code>files.watch</code> / <code>changes.watch</code>.</li>
+            <li>On file creation or update it sends an HTTPS POST to the webhook endpoint.</li>
+            <li>Headers: <code>X-Goog-Channel-ID</code> (channel UUID), <code>X-Goog-Resource-State</code> (<code>sync</code>, <code>add</code>, <code>update</code>, <code>content</code>), <code>X-Goog-Resource-URI</code> (target resource).</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>3. Agentic execution &amp; code generation</h3>
+          <p class="role"><b>IBM Bob Harness</b>: cloud execution environment and coding agent.</p>
+          <ul>
+            <li>Validates webhook headers and responds immediately with HTTP 200 OK.</li>
+            <li>Uses a service-account OAuth 2.0 token to call <code>files.get</code> and fetch the updated document.</li>
+            <li>Parses the design brief and generates HTML, CSS, JavaScript or framework assets in a dedicated repository (e.g. <code>web-builder-service</code>).</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h3>4. Versioning &amp; continuous deployment</h3>
+          <p class="role"><b>GitHub &amp; GitHub Pages</b>: version control and hosting.</p>
+          <ul>
+            <li><b>Repository isolation:</b> the agent creates or updates a modular, dedicated repository.</li>
+            <li><b>Commit &amp; push:</b> generated code is committed via the GitHub REST API or SSH.</li>
+            <li><b>Automated build:</b> a GitHub Actions workflow builds static assets.</li>
+            <li><b>Deployment:</b> artifacts are published to GitHub Pages with an instant public URL.</li>
+          </ul>
+        </article>
+      </div>
+    </section>
+
+    <section>
+      <h2>Key advantages</h2>
+      <dl class="advantages">
+        <div><dt>Zero-latency orchestration</dt><dd>Push notifications trigger execution instantly, with no polling or manual file transfers.</dd></div>
+        <div><dt>Hands-free development</dt><dd>Natural-language voice prompts become fully deployed web applications end to end.</dd></div>
+        <div><dt>Modular architecture</dt><dd>Clean separation between interface (Gemini Live), storage (Google Drive), agent execution (IBM Bob Harness) and hosting (GitHub).</dd></div>
+        <div><dt>Traceability &amp; versioning</dt><dd>A full audit trail across Google Drive documents and GitHub commit history.</dd></div>
+        <div><dt>Autonomous deployment</dt><dd>Dedicated repositories are provisioned and published to live public URLs via GitHub Pages.</dd></div>
+      </dl>
+    </section>
+
+    <section>
+      <h2>System integration summary</h2>
+      <p>This event-driven pipeline combines multimodal AI, serverless webhooks, agentic orchestration and CI/CD hosting into an autonomous web generation system.</p>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">Generated by IBM Bob Harness from a Gemini Live / Google Drive document.</div>
+  </footer>
+</body>
+</html>
